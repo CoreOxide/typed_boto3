@@ -1,0 +1,39 @@
+[tool.poetry]
+name = "typed-boto3"
+version = "0.1.0"
+description = "Strongly-typed, SDK-like wrapper around boto3 powered by Pydantic models from aws-resource-validator."
+authors = ["Alexy Grabov"]
+readme = "README.md"
+packages = [{ include = "typed_boto3" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+boto3 = "*"
+botocore = "*"
+pydantic = ">=2.8,<3.0"
+aws-resource-validator = ">=2.0,<3.0"
+aws-resource-validator-lambda = ">=2.0,<3.0"
+aws-resource-validator-s3 = ">=2.0,<3.0"
+jinja2 = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0"
+moto = { version = "^5.0", extras = ["lambda", "s3"] }
+mypy = "*"
+ruff = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["boto3", "boto3.*", "botocore", "botocore.*", "aws_resource_validator", "aws_resource_validator.*"]
+ignore_missing_imports = true
