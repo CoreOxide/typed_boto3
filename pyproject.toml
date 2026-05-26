@@ -12,13 +12,46 @@ boto3 = "*"
 botocore = "*"
 pydantic = ">=2.8,<3.0"
 aws-resource-validator = ">=2.0,<3.0"
+aws-resource-validator-apigateway = ">=2.0,<3.0"
+aws-resource-validator-apigatewayv2 = ">=2.0,<3.0"
+aws-resource-validator-athena = ">=2.0,<3.0"
+aws-resource-validator-bedrock = ">=2.0,<3.0"
+aws-resource-validator-cloudformation = ">=2.0,<3.0"
+aws-resource-validator-cloudwatch = ">=2.0,<3.0"
+aws-resource-validator-cognito-idp = ">=2.0,<3.0"
+aws-resource-validator-dynamodb = ">=2.0,<3.0"
+aws-resource-validator-ec2 = ">=2.0,<3.0"
+aws-resource-validator-ecs = ">=2.0,<3.0"
+aws-resource-validator-elbv2 = ">=2.0,<3.0"
+aws-resource-validator-events = ">=2.0,<3.0"
+aws-resource-validator-firehose = ">=2.0,<3.0"
+aws-resource-validator-glue = ">=2.0,<3.0"
+aws-resource-validator-iam = ">=2.0,<3.0"
+aws-resource-validator-kinesis = ">=2.0,<3.0"
+aws-resource-validator-kms = ">=2.0,<3.0"
 aws-resource-validator-lambda = ">=2.0,<3.0"
+aws-resource-validator-logs = ">=2.0,<3.0"
+aws-resource-validator-rds = ">=2.0,<3.0"
+aws-resource-validator-redshift = ">=2.0,<3.0"
+aws-resource-validator-route53 = ">=2.0,<3.0"
 aws-resource-validator-s3 = ">=2.0,<3.0"
+aws-resource-validator-sagemaker = ">=2.0,<3.0"
+aws-resource-validator-secretsmanager = ">=2.0,<3.0"
+aws-resource-validator-sns = ">=2.0,<3.0"
+aws-resource-validator-sqs = ">=2.0,<3.0"
+aws-resource-validator-ssm = ">=2.0,<3.0"
+aws-resource-validator-stepfunctions = ">=2.0,<3.0"
+aws-resource-validator-sts = ">=2.0,<3.0"
 jinja2 = "*"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^9.0"
-moto = { version = "^5.0", extras = ["lambda", "s3"] }
+moto = { version = "^5.0", extras = [
+  "apigateway", "apigatewayv2", "athena", "awslambda", "cloudformation", "cloudwatch",
+  "cognitoidp", "dynamodb", "ec2", "ecs", "elbv2", "events", "firehose", "glue",
+  "iam", "kinesis", "kms", "logs", "rds", "redshift", "route53", "s3", "sagemaker",
+  "secretsmanager", "sns", "sqs", "ssm", "stepfunctions", "sts",
+] }
 mypy = "*"
 ruff = "*"
 

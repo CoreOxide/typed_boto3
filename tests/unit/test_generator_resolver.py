@@ -9,6 +9,10 @@ def test_module_path_s3_plain():
     assert module_path("s3") == "aws_resource_validator.pydantic_models.s3.s3_classes"
 
 
+def test_module_path_hyphen_is_normalised_to_underscore():
+    assert module_path("cognito-idp") == "aws_resource_validator.pydantic_models.cognito_idp.cognito_idp_classes"
+
+
 def test_resolve_returns_hit_for_known_shape():
     r = resolve("lambda", "CreateFunctionRequest")
     assert r is not None
