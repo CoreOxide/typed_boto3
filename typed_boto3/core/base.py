@@ -1,4 +1,5 @@
 import functools
+import typing
 from typing import Any, TypeVar
 
 import boto3
@@ -13,6 +14,20 @@ TResp = TypeVar("TResp", bound=BaseModel)
 @functools.lru_cache(maxsize=None)
 def _adapter_for(annotation: Any) -> TypeAdapter[Any]:
     return TypeAdapter(annotation)
+
+
+def _basemodel_in(annotation: Any) -> type[BaseModel] | None:
+    """Return the first BaseModel subclass found in an annotation, peeling
+    Optional/Union/List/Sequence wrappers. Used to decide whether a failing
+    strict validation should retry recursively in lenient mode.
+    """
+    if isinstance(annotation, type) and issubclass(annotation, BaseModel):
+        return annotation
+    for arg in typing.get_args(annotation):
+        found = _basemodel_in(arg)
+        if found is not None:
+            return found
+    return None
 
 
 class TypedClientBase:
@@ -87,9 +102,56 @@ def _lenient_validate(response_cls: type[TResp], raw: dict[str, Any]) -> TResp:
             continue
         for key in _field_lookup_keys(name, field):
             if key in raw:
+                value = raw[key]
                 try:
-                    values[name] = _adapter_for(annotation).validate_python(raw[key])
+                    values[name] = _adapter_for(annotation).validate_python(value)
                 except ValidationError:
-                    pass
+                    nested = _basemodel_in(annotation)
+                    if nested is not None:
+                        coerced = _lenient_coerce(annotation, nested, value)
+                        if coerced is not _DROP:
+                            values[name] = coerced
                 break
     return response_cls.model_construct(**values)
+
+
+_DROP: Any = object()
+
+
+def _lenient_coerce(annotation: Any, model_cls: type[BaseModel], value: Any) -> Any:
+    """Coerce `value` against `annotation` lazily — descend into lists/tuples
+    and apply `_lenient_validate(model_cls, item)` to dicts. Returns _DROP
+    when the value's shape doesn't match the annotation (e.g. a string where
+    a model is expected) so callers can omit the field entirely rather than
+    storing a raw, untyped value.
+    """
+    if isinstance(value, list | tuple):
+        item_model = _list_item_basemodel(annotation) or model_cls
+        coerced: list[Any] = []
+        for item in value:
+            if isinstance(item, dict):
+                coerced.append(_lenient_validate(item_model, item))
+            elif isinstance(item, item_model):
+                coerced.append(item)
+            else:
+                return _DROP
+        return tuple(coerced) if isinstance(value, tuple) else coerced
+    if isinstance(value, dict):
+        return _lenient_validate(model_cls, value)
+    return _DROP
+
+
+def _list_item_basemodel(annotation: Any) -> type[BaseModel] | None:
+    """Find a `list[BaseModel]` (or tuple) inside an annotation and return
+    the BaseModel item type, peeling Union/Optional wrappers."""
+    origin = typing.get_origin(annotation)
+    if origin in (list, tuple):
+        for arg in typing.get_args(annotation):
+            found = _basemodel_in(arg)
+            if found is not None:
+                return found
+    for arg in typing.get_args(annotation):
+        found = _list_item_basemodel(arg)
+        if found is not None:
+            return found
+    return None

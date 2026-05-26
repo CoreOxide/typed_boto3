@@ -2,7 +2,8 @@ import keyword
 
 
 def service_dir(service: str) -> str:
-    return f"{service}_" if keyword.iskeyword(service) else service
+    name = service.replace("-", "_")
+    return f"{name}_" if keyword.iskeyword(name) else name
 
 
 def class_name(service: str) -> str:

@@ -2,7 +2,15 @@
 from typing import assert_type
 
 import typed_boto3
-from typed_boto3 import ClientConfig, LambdaClient, Region, S3Client, ServiceName
+from typed_boto3 import (
+    ClientConfig,
+    DynamodbClient,
+    LambdaClient,
+    Region,
+    Route53Client,
+    S3Client,
+    ServiceName,
+)
 from aws_resource_validator.pydantic_models.lambda_.lambda__classes import (
     CreateFunctionRequestTypeDef,
     FunctionCodeTypeDef,
@@ -17,6 +25,12 @@ def good_factory() -> None:
 
     s = typed_boto3.client(ServiceName.S3, config)
     assert_type(s, S3Client)
+
+    d = typed_boto3.client(ServiceName.DYNAMODB, config)
+    assert_type(d, DynamodbClient)
+
+    r = typed_boto3.client(ServiceName.ROUTE53, config)
+    assert_type(r, Route53Client)
 
 
 def good_direct() -> None:
