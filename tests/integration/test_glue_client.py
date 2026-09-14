@@ -1,13 +1,13 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, GlueClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.glue.glue_classes import (
     CreateDatabaseRequestTypeDef,
     DatabaseInputTypeDef,
     GetDatabasesRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, GlueClient, Region, ServiceName
 
 
 @pytest.fixture

@@ -1,13 +1,13 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, FirehoseClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.firehose.firehose_classes import (
     CreateDeliveryStreamInputTypeDef,
     DescribeDeliveryStreamInputTypeDef,
     ExtendedS3DestinationConfigurationTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, FirehoseClient, Region, ServiceName
 
 
 @pytest.fixture

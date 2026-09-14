@@ -1,15 +1,14 @@
 import json
 
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, CloudformationClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.cloudformation.cloudformation_classes import (
     CreateStackInputTypeDef,
     DescribeStacksInputTypeDef,
 )
+from moto import mock_aws
 
+import typed_boto3
+from typed_boto3 import ClientConfig, CloudformationClient, Region, ServiceName
 
 _EMPTY_TEMPLATE = json.dumps(
     {

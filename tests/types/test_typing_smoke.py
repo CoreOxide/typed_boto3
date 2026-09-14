@@ -2,7 +2,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 HERE = Path(__file__).parent
 
 
@@ -11,6 +10,7 @@ def test_good_usage_passes_mypy():
         [sys.executable, "-m", "mypy", "--strict", str(HERE / "_good_usage.py")],
         capture_output=True,
         text=True,
+        check=False,
     )
     assert result.returncode == 0, f"mypy unexpectedly failed:\n{result.stdout}\n{result.stderr}"
 
@@ -28,6 +28,7 @@ def test_bad_usage_without_ignores_fails_mypy(tmp_path):
         [sys.executable, "-m", "mypy", "--strict", str(probe)],
         capture_output=True,
         text=True,
+        check=False,
     )
     assert result.returncode != 0, "mypy should have rejected raw strings"
     assert "arg-type" in result.stdout or "arg-type" in result.stderr
@@ -39,5 +40,6 @@ def test_bad_usage_with_ignores_passes_mypy():
         [sys.executable, "-m", "mypy", "--strict", str(HERE / "_bad_usage.py")],
         capture_output=True,
         text=True,
+        check=False,
     )
     assert result.returncode == 0, f"expected clean:\n{result.stdout}\n{result.stderr}"

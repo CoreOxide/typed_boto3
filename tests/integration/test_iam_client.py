@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, IamClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.iam.iam_classes import (
     CreateUserRequestTypeDef,
     GetUserRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, IamClient, Region, ServiceName
 
 
 @pytest.fixture

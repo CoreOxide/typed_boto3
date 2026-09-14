@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import Apigatewayv2Client, ClientConfig, Region, ServiceName
 from aws_resource_validator.pydantic_models.apigatewayv2.apigatewayv2_classes import (
     CreateApiRequestTypeDef,
     GetApisRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import Apigatewayv2Client, ClientConfig, Region, ServiceName
 
 
 @pytest.fixture

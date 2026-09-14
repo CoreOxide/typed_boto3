@@ -1,5 +1,5 @@
-from pydantic import AnyHttpUrl, BaseModel, ConfigDict, SecretStr
 from botocore.config import Config as BotocoreConfig
+from pydantic import AnyHttpUrl, BaseModel, ConfigDict, SecretStr
 
 from typed_boto3._region import Region
 

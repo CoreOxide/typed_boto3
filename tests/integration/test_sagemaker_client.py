@@ -1,13 +1,13 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, SagemakerClient, ServiceName
 from aws_resource_validator.pydantic_models.sagemaker.sagemaker_classes import (
     ContainerDefinitionTypeDef,
     CreateModelInputTypeDef,
     DescribeModelInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, SagemakerClient, ServiceName
 
 
 @pytest.fixture

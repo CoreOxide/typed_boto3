@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, ServiceName, SqsClient
 from aws_resource_validator.pydantic_models.sqs.sqs_classes import (
     CreateQueueRequestTypeDef,
     ListQueuesRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, ServiceName, SqsClient
 
 
 @pytest.fixture

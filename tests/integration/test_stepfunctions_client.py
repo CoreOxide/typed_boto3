@@ -2,14 +2,14 @@ import json
 
 import boto3
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, ServiceName, StepfunctionsClient
 from aws_resource_validator.pydantic_models.stepfunctions.stepfunctions_classes import (
     CreateStateMachineInputTypeDef,
     DescribeStateMachineInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, ServiceName, StepfunctionsClient
 
 
 def _create_role() -> str:

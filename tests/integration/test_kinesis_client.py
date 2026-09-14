@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, KinesisClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.kinesis.kinesis_classes import (
     CreateStreamInputTypeDef,
     DescribeStreamInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, KinesisClient, Region, ServiceName
 
 
 @pytest.fixture

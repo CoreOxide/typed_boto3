@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, CognitoIdpClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.cognito_idp.cognito_idp_classes import (
     CreateUserPoolRequestTypeDef,
     DescribeUserPoolRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, CognitoIdpClient, Region, ServiceName
 
 
 @pytest.fixture
