@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "typed-boto3-sdk"
-version = "0.1.0"
+version = "0.1.1"
 description = "Strongly-typed, SDK-like wrapper around boto3 powered by Pydantic models from aws-resource-validator."
 authors = ["Alexy Grabov"]
 readme = "README.md"
