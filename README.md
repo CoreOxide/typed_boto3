@@ -6,7 +6,13 @@ client method are concrete Pydantic models — no dicts, no magic strings.
 ## Install
 
 ```bash
-poetry install
+pip install typed-boto3-sdk
+```
+
+or with Poetry:
+
+```bash
+poetry add typed-boto3-sdk
 ```
 
 `typed_boto3` depends on [`aws-resource-validator`](https://pypi.org/project/aws-resource-validator/)
