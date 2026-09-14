@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, Route53Client, ServiceName
 from aws_resource_validator.pydantic_models.route53.route53_classes import (
     CreateHostedZoneRequestTypeDef,
     GetHostedZoneRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, Route53Client, ServiceName
 
 
 @pytest.fixture

@@ -11,7 +11,7 @@ from typed_boto3.core.config import ClientConfig
 TResp = TypeVar("TResp", bound=BaseModel)
 
 
-@functools.lru_cache(maxsize=None)
+@functools.cache
 def _adapter_for(annotation: Any) -> TypeAdapter[Any]:
     return TypeAdapter(annotation)
 

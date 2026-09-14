@@ -1,13 +1,13 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Ec2Client, Region, ServiceName
 from aws_resource_validator.pydantic_models.ec2.ec2_classes import (
     DescribeInstancesRequestTypeDef,
     DescribeRegionsRequestTypeDef,
     RunInstancesRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Ec2Client, Region, ServiceName
 
 
 @pytest.fixture

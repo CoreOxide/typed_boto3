@@ -4,16 +4,16 @@ import zipfile
 
 import boto3
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, LambdaClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.lambda_.lambda__classes import (
     CreateFunctionRequestTypeDef,
     FunctionCodeTypeDef,
     GetFunctionRequestTypeDef,
     ListFunctionsRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, LambdaClient, Region, ServiceName
 
 
 def _zip_bytes() -> bytes:

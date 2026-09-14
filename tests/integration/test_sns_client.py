@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, ServiceName, SnsClient
 from aws_resource_validator.pydantic_models.sns.sns_classes import (
     CreateTopicInputTypeDef,
     ListTopicsInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, ServiceName, SnsClient
 
 
 @pytest.fixture

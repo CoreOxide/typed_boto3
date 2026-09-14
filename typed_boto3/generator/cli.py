@@ -9,7 +9,6 @@ from typed_boto3.generator.overloads_emitter import (
 )
 from typed_boto3.generator.regions_emitter import write_region_enum
 
-
 PACKAGE_ROOT = Path(__file__).resolve().parent.parent
 
 

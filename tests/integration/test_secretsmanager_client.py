@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, SecretsmanagerClient, ServiceName
 from aws_resource_validator.pydantic_models.secretsmanager.secretsmanager_classes import (
     CreateSecretRequestTypeDef,
     DescribeSecretRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, SecretsmanagerClient, ServiceName
 
 
 @pytest.fixture

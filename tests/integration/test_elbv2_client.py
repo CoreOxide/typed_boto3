@@ -1,13 +1,13 @@
 import boto3
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Elbv2Client, Region, ServiceName
 from aws_resource_validator.pydantic_models.elbv2.elbv2_classes import (
     CreateLoadBalancerInputTypeDef,
     DescribeLoadBalancersInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Elbv2Client, Region, ServiceName
 
 
 def _create_subnets() -> list[str]:

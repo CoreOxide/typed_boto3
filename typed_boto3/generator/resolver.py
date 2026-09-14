@@ -17,7 +17,7 @@ def module_path(service: str) -> str:
     return f"aws_resource_validator.pydantic_models.{svc}.{svc}_classes"
 
 
-@functools.lru_cache(maxsize=None)
+@functools.cache
 def _load_module(path: str) -> ModuleType | None:
     try:
         return importlib.import_module(path)

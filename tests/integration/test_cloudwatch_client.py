@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, CloudwatchClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.cloudwatch.cloudwatch_classes import (
     DescribeAlarmsInputTypeDef,
     PutMetricAlarmInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, CloudwatchClient, Region, ServiceName
 
 
 @pytest.fixture

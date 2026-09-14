@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import AthenaClient, ClientConfig, Region, ServiceName
 from aws_resource_validator.pydantic_models.athena.athena_classes import (
     GetQueryExecutionInputTypeDef,
     StartQueryExecutionInputTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import AthenaClient, ClientConfig, Region, ServiceName
 
 
 @pytest.fixture

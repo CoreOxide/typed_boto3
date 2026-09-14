@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, RdsClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.rds.rds_classes import (
     CreateDBInstanceMessageTypeDef,
     DescribeDBInstancesMessageTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, RdsClient, Region, ServiceName
 
 
 @pytest.fixture

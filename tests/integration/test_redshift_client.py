@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, RedshiftClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.redshift.redshift_classes import (
     CreateClusterMessageTypeDef,
     DescribeClustersMessageTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, RedshiftClient, Region, ServiceName
 
 
 @pytest.fixture

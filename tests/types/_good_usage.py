@@ -1,6 +1,12 @@
 """Must type-check under mypy --strict."""
 from typing import assert_type
 
+from aws_resource_validator.pydantic_models.lambda_.lambda__classes import (
+    CreateFunctionRequestTypeDef,
+    FunctionCodeTypeDef,
+    FunctionConfigurationTypeDef,
+)
+
 import typed_boto3
 from typed_boto3 import (
     ClientConfig,
@@ -10,11 +16,6 @@ from typed_boto3 import (
     Route53Client,
     S3Client,
     ServiceName,
-)
-from aws_resource_validator.pydantic_models.lambda_.lambda__classes import (
-    CreateFunctionRequestTypeDef,
-    FunctionCodeTypeDef,
-    FunctionConfigurationTypeDef,
 )
 
 

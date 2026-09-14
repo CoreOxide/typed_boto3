@@ -1,14 +1,14 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, DynamodbClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.dynamodb.dynamodb_classes import (
     AttributeDefinitionTypeDef,
     CreateTableInputTypeDef,
     DescribeTableInputTypeDef,
     KeySchemaElementTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, DynamodbClient, Region, ServiceName
 
 
 @pytest.fixture

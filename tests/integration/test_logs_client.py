@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, LogsClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.logs.logs_classes import (
     CreateLogGroupRequestTypeDef,
     DescribeLogGroupsRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, LogsClient, Region, ServiceName
 
 
 @pytest.fixture

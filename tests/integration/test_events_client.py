@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, EventsClient, Region, ServiceName
 from aws_resource_validator.pydantic_models.events.events_classes import (
     ListRulesRequestTypeDef,
     PutRuleRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, EventsClient, Region, ServiceName
 
 
 @pytest.fixture

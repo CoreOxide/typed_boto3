@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, ServiceName, SsmClient
 from aws_resource_validator.pydantic_models.ssm.ssm_classes import (
     GetParameterRequestTypeDef,
     PutParameterRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, ServiceName, SsmClient
 
 
 @pytest.fixture

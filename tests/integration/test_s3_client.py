@@ -1,12 +1,12 @@
 import pytest
-from moto import mock_aws
-
-import typed_boto3
-from typed_boto3 import ClientConfig, Region, S3Client, ServiceName
 from aws_resource_validator.pydantic_models.s3.s3_classes import (
     CreateBucketRequestTypeDef,
     ListBucketsRequestTypeDef,
 )
+from moto import mock_aws
+
+import typed_boto3
+from typed_boto3 import ClientConfig, Region, S3Client, ServiceName
 
 
 @pytest.fixture
